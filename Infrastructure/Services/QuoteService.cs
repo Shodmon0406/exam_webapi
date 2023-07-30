@@ -74,7 +74,7 @@ public class QuoteService
         return conn.QuerySingle<QuoteDto<string>>(sql);
     }
     
-    public QuoteDto<string> GetQuoteByCategoryId(int id)
+    public List<QuoteDto<string>> GetQuoteByCategoryId(int id)
     {
         var conn = _context.Connection();
         var sql = @"select q.id, q.author, q.quote_text as quotetext, c.name as category
@@ -82,6 +82,6 @@ public class QuoteService
                     join categories as c
                     on q.category_id = c.id
                     where c.id = @id";
-        return conn.QuerySingle<QuoteDto<string>>(sql, new { id });
+        return conn.Query<QuoteDto<string>>(sql, new { id }).ToList();
     }
 }

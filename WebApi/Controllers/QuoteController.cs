@@ -52,7 +52,7 @@ public class QuoteController
     }
     
     [HttpGet("GetQuoteByCategoryId")]
-    public QuoteDto<string> GetQuoteByCategoryId(int id)
+    public List<QuoteDto<string>> GetQuoteByCategoryId(int id)
     {
         return _quoteService.GetQuoteByCategoryId(id);
     }
