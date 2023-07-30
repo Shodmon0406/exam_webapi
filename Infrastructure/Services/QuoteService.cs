@@ -16,7 +16,7 @@ public class QuoteService
     public List<QuoteDto<string>> GetQuotes()
     {
         var conn = _context.Connection();
-        var sql = @"select q.id, q.author, q.quote_text, c.name
+        var sql = @"select q.id, q.author, q.quote_text as quotetext, c.name as category
                     from quotes as q
                     join categories as c
                     on q.category_id = c.id";
